@@ -1,0 +1,107 @@
+## cpp-properties
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
+
+
+## launch
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
+
+
+## tasks
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ build active file",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/g++"
+		}
+	]
+}
+
+
+## settings
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/src"
+}
+
+
+
+# # # Eigen
+# # ARG EIGEN3_VERSION=3.3.7
+# # WORKDIR /tmp
+# # RUN set -x && \
+# #   wget -q http://bitbucket.org/eigen/eigen/get/${EIGEN3_VERSION}.tar.bz2 && \
+# #   tar xf ${EIGEN3_VERSION}.tar.bz2 && \
+# #   rm -rf ${EIGEN3_VERSION}.tar.bz2 && \
+# #   mv eigen-eigen-* eigen-${EIGEN3_VERSION} && \
+# #   cd eigen-${EIGEN3_VERSION} && \
+# #   mkdir -p build && \
+# #   cd build && \
+# #   cmake \
+# #     -DCMAKE_BUILD_TYPE=Release \
+# #     -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} \
+# #     .. && \
+# #   make -j${NUM_THREADS} && \
+# #   make install && \
+# #   cd /tmp && \
+# #   rm -rf *
+# # ENV Eigen3_DIR=${CMAKE_INSTALL_PREFIX}/share/eigen3/cmake
